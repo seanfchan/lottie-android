@@ -121,6 +121,21 @@ animator.start();
 animationView.cancelAnimation();
 ```
 
+You can add a color filter to the whole animation, or a specific layer, or specific content within a layer.
+```java
+final ColorFilter colorFilter = new PorterDuffColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
+// Adding a color filter to the whole view
+animationView.addColorFilter(colorFilter);
+
+// Adding a color filter to a specific layer
+animationView.addColorFilterToLayer("hello_layer", colorFilter);
+
+// Adding a color filter to specfic content on the "hello_layer"
+animationView.addColorFilterToContent("hello_layer", "hello", colorFilter);
+
+// Clear all color filters
+animationView.clearColorFilters();
+```
 
 Under the hood, `LottieAnimationView` uses `LottieDrawable` to render its animations. If you need to, you can use the drawable form directly:
 ```java
